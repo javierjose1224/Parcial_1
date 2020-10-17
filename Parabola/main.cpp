@@ -8,8 +8,8 @@ using namespace std;
 int main()
 {
     int op;
-    float Ho,Vo,Hd,Vd,alpo,alpd,dist,t=0,t2;
-    float g=9.81;
+    double Ho,Vo,Hd,Vd,alpo,alpd,dist,t=0,t2;
+    double g=9.81;
     bool ver=true;
 
     while (ver==true)
@@ -33,22 +33,21 @@ int main()
                 double cos,detr,dtr2,v;
                 cos=sqrt(2)/2;
                 //cout<<cos<<endl;
-                for(v=0.01;t<2.5;v=v+0.01)
+                for(v=0.001;t<2.5;v=v+0.001)
                 {
-
                     detr=((v*cos)*(v*cos))-(4*(g/2)*(Hd-Ho));
                     //cout<<detr<<endl;
-                    dtr2=v+sqrt(detr);
+                    dtr2=v*cos+sqrt(detr);
                     //cout<<dtr2<<endl;
                     t=dtr2/g;
-                    cout<<"Tiempo: "<<t<<endl;
+                    //cout<<"Tiempo: "<<t<<endl;
                     t2=dist/(cos*v);
                     if(abs(t-t2)<=0.001)
                     {
-                        cout<<"Esta es la velocidad "<<v<<endl;
+                        cout<<"velocidad "<<v<<endl;
                     }
                 }
-                //cout<<"velocidad "<<v<<endl;
+
 
                 //vel_gd(Ho, Hd);
 
