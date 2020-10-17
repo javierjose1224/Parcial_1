@@ -8,7 +8,7 @@ using namespace std;
 int main()
 {
     int op;
-    float Ho,Vo,Hd,Vd,alpo,alpd,dist,t=0;
+    float Ho,Vo,Hd,Vd,alpo,alpd,dist,t=0,t2;
     float g=9.81;
     bool ver=true;
 
@@ -30,19 +30,25 @@ int main()
                 cin>>Ho;
                 cout<<"Altura canion def: ";
                 cin>>Hd;
-                float cos,detr,cuadr,dtr2;
+                double cos,detr,dtr2,v;
                 cos=sqrt(2)/2;
                 //cout<<cos<<endl;
-                for(float v=1;t<2.5;v=v+0.01)
+                for(v=0.01;t<2.5;v=v+0.01)
                 {
 
                     detr=((v*cos)*(v*cos))-(4*(g/2)*(Hd-Ho));
                     //cout<<detr<<endl;
-                    dtr2=+sqrt(detr);
+                    dtr2=v+sqrt(detr);
                     //cout<<dtr2<<endl;
                     t=dtr2/g;
-                    cout<<"Timepo: "t<<endl;
+                    cout<<"Tiempo: "<<t<<endl;
+                    t2=dist/(cos*v);
+                    if(abs(t-t2)<=0.001)
+                    {
+                        cout<<"Esta es la velocidad "<<v<<endl;
+                    }
                 }
+                //cout<<"velocidad "<<v<<endl;
 
                 //vel_gd(Ho, Hd);
 
