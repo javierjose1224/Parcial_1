@@ -2,19 +2,22 @@
 #include <cmath>
 using namespace std;
 
-void vel_gd(int ,int );
+
 
 
 int main()
 {
-    int op,Ho,Vo,Hd,Vd,alpo,alpd,dist;
+    int op;
+    float Ho,Vo,Hd,Vd,alpo,alpd,dist,t=0;
+    float g=9.81;
     bool ver=true;
 
-    while (ver)
-        cout<<"1 para disparos ofensivos aciertan defensivo: ";
-        cout<<"2 disparos de defensivo aciertan ofensivo  ";
-        cout<<"3 para disparos defensivos: ";
-        cout<<"4 para disparos : ";
+    while (ver==true)
+    {
+        cout<<"1 para disparos ofensivos aciertan defensivo: "<<endl;
+        cout<<"2 disparos de defensivo aciertan ofensivo  "<<endl;
+        cout<<"3 para disparos defensivos: "<<endl;
+        cout<<"4 para disparos : "<<endl;
         cin>>op;
     //generar distapros ofensivos
         switch(op)
@@ -27,7 +30,21 @@ int main()
                 cin>>Ho;
                 cout<<"Altura canion def: ";
                 cin>>Hd;
-                vel_gd(Ho, Hd);
+                float cos,detr,cuadr,dtr2;
+                cos=sqrt(2)/2;
+                //cout<<cos<<endl;
+                for(float v=1;t<2.5;v=v+0.01)
+                {
+
+                    detr=((v*cos)*(v*cos))-(4*(g/2)*(Hd-Ho));
+                    //cout<<detr<<endl;
+                    dtr2=+sqrt(detr);
+                    //cout<<dtr2<<endl;
+                    t=dtr2/g;
+                    cout<<"Timepo: "t<<endl;
+                }
+
+                //vel_gd(Ho, Hd);
 
 
             }
@@ -54,19 +71,7 @@ int main()
 
         }
 
-
+    }
     return 0;
 }
 
-void vel_gd(int al1,int al2)
-{
-    double t;
-    double a=2,cos;
-    double sqrt(double a)/2;
-    cos=a/2;
-    for(double v=0.0;t>2,5;v++)
-    {
-        t=()/2;
-    }
-
-}
