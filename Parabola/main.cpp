@@ -18,7 +18,13 @@ int main()
         {
             case 1:
             {
-                cout<<"distancia entre los cañones: (d) ";
+                cout<<"distancia entre los caniones: (d) ";
+                cin>>dist;
+                cout<<"Altura canion of: ";
+                cin>>Ho;
+                cout<<"Altura canion def: ";
+                cin>>Hd;
+
             }
             break;
 
