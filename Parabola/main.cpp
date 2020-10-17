@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include <cmath>
 using namespace std;
 
 void vel_gd(int ,int );
@@ -60,9 +60,13 @@ int main()
 
 void vel_gd(int al1,int al2)
 {
-    float t=2.5,vel1;
-    for(int i=0;t<2.5;i++)
+    double t;
+    double a=2,cos;
+    double sqrt(double a)/2;
+    cos=a/2;
+    for(double v=0.0;t>2,5;v++)
     {
-
+        t=()/2;
     }
+
 }
