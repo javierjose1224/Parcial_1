@@ -2,6 +2,9 @@
 
 using namespace std;
 
+void vel_gd(int ,int );
+
+
 int main()
 {
     int op,Ho,Vo,Hd,Vd,alpo,alpd,dist;
@@ -24,6 +27,8 @@ int main()
                 cin>>Ho;
                 cout<<"Altura canion def: ";
                 cin>>Hd;
+                vel_gd(Ho, Hd);
+
 
             }
             break;
@@ -51,4 +56,13 @@ int main()
 
 
     return 0;
+}
+
+void vel_gd(int al1,int al2)
+{
+    float t=2.5,vel1;
+    for(int i=0;t<2.5;i++)
+    {
+
+    }
 }
