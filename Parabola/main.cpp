@@ -3,14 +3,14 @@
 using namespace std;
 
 
-
+bool evaluarCos(int, int, int, int);
 
 int main()
 {
     int op;
     double Ho,Vo,Hd,Vd,alpo,alpd,dist,t=0,t2;
     double g=9.81;
-    bool ver=true;
+    bool ver=true,va;
 
     while (ver==true)
     {
@@ -31,21 +31,32 @@ int main()
                 cout<<"Altura canion def: ";
                 cin>>Hd;
                 double cos,detr,dtr2,v;
-                cos=sqrt(2)/2;
+                cos=sqrt(2)/2;//COSENO DE 45 GRADOS
                 //cout<<cos<<endl;
+
                 for(v=0.001;t<2.5;v=v+0.001)
                 {
+
                     detr=((v*cos)*(v*cos))-(4*(g/2)*(Hd-Ho));
-                    //cout<<detr<<endl;
-                    dtr2=v*cos+sqrt(detr);
-                    //cout<<dtr2<<endl;
-                    t=dtr2/g;
-                    //cout<<"Tiempo: "<<t<<endl;
-                    t2=dist/(cos*v);
-                    if(abs(t-t2)<=0.001)
+                    if(detr<0)
                     {
-                        cout<<"velocidad "<<v<<endl;
+                        //cout<<"no se puede: "<<endl;
                     }
+                    else
+                    {
+                        dtr2=v*cos+sqrt(detr);
+                        //cout<<dtr2<<endl;
+                        t=dtr2/g;
+                        //cout<<"Tiempo: "<<t<<endl;
+                        t2=dist/(cos*v);
+                        if(abs(t-t2)<=0.001)
+                        {
+                            cout<<"velocidad con 45 grados para mayor alcance es de: "<<v<<endl;
+                        }
+                        //va=evaluarCos(v,detr,dtr2);
+                    }
+                    //cout<<detr<<endl;
+
                 }
 
 
@@ -80,3 +91,10 @@ int main()
     return 0;
 }
 
+//bool evaluarCos();
+//{
+  //  for(double a=0;t<2,5;a=a+0,1;)
+  //  {
+
+  //  }
+//}
