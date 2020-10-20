@@ -24,74 +24,36 @@ int main()
         {
             case 1:
             {
-            /*
-                cout<<"distancia entre los caniones: (d) ";
-                cin>>dist;
-                cout<<"Altura canion of: ";
-                cin>>Ho;
-                cout<<"Altura canion def: ";
-                cin>>Hd;
-                double cos,detr,dtr2,v;
-                cos=sqrt(2)/2;//COSENO DE 45 GRADOS
-                //cout<<cos<<endl;
+            float dist,Ho,Hd,t=0.0,vox,voy,detr,g=9.81,y,t2,x,ang=0.5;
+            cout<<"distancia entre los caniones: (d) ";
+            cin>>dist;
+            cout<<"Altura canion of: ";
+            cin>>Ho;
+            cout<<"Altura canion def: ";
+            cin>>Hd;
+            ang=90;
+            float v=0.1;
 
-                for(v=0.001;t<2.5;v=v+0.001)
+            if(Ho==Hd)
+            {
+                for(;t<2.5;v=v+0.01)//2.5 porque es lo que se demora en responder el canion defensivo
                 {
-
-                    detr=((v*cos)*(v*cos))-(4*(g/2)*(Hd-Ho));
-
-                    dtr2=v*cos+sqrt(detr);
-                    //cout<<dtr2<<endl;
-                    t=dtr2/g;
-                    //cout<<"Tiempo: "<<t<<endl;
-                    t2=dist/(cos*v);
+                    ang=20;//CUANDO LAS DOS ALTURAS de los caniones MIDEN LO MISMO Se puede usar cualquier angulo del primer cuadrante a excepcion de 90
+                    vox=v*cos(ang*(3.14/180));
+                    voy=v*sin(ang*(3.14/180));
+                    detr=(pow(voy,2))-((4*(g/2))*(Hd-Ho));
+                    t=(voy+sqrt(detr))/2;
+                    cout<<"Tiempo 2: "<<t2<<endl;
+                    cout<<"El tiempo es: "<<t<<endl;
+                    y=Ho+(voy*t)+((-(g/2))*(t*t));
+                    t2=dist/vox;
                     if(abs(t-t2)<=0.001)
                     {
-                        cout<<"velocidad con 45 grados para mayor alcance es de: "<<v<<endl;
+                        cout<<"vo:"<< v <<" tiempo:"<< t <<" con angulo: "<<ang<<endl;
+                        break;
                     }
-                        //va=evaluarCos(v,detr,dtr2);
-
-                    //cout<<detr<<endl;
                 }
-               */
-              cout<<"distancia entre los caniones: (d) ";
-              cin>>dist;
-              cout<<"Altura canion of: ";
-              cin>>Ho;
-              cout<<"Altura canion def: ";
-              cin>>Hd;
-              ang=0.5;
-              float v=0.1;
-              for(;t<2.5;v=v+0.1)
-              {
-
-                  vox=v*cos(ang*(3.14/180));
-                  voy=v*sin(ang*(3.14/180));
-                  detr=((voy)*(voy))-((4*(g/2))*(Hd-Ho));
-                  t=(voy+sqrt(detr))/2;
-                  t2=(voy-sqrt(detr))/2;
-                  cout<<"Tiempo 2: "<<t2<<endl;
-                  //cout<<"El tiempo es: "<<t<<endl;
-                  y=Ho+(voy*t)+((-(g/2))*(t*t));
-                  x=vox*t;
-                  int a=x/1,b=y/1;
-                  cout<<"Distancia en y "<<b<<" Distancia en x "<<a<<endl;
-                  if(a==dist || b==Hd)
-                  {
-                      break;
-                  }
-                  else
-                  {
-                      ang=ang+0.5;
-                      v=0.1;
-                  }
-
-
-                  cout<<"distancia en y: "<<y<<" en x: "<<x<<" En tiempo: "<<t<<" con angulo: "<<ang<<endl;
-              }
-
-                //vel_gd(Ho, Hd);
-
+            }
 
             }
             break;
