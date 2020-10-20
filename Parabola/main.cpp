@@ -8,8 +8,8 @@ bool evaluarCos(int, int, int, int);
 int main()
 {
     int op;
-    double Ho,Vo,Hd,Vd,alpo,alpd,dist,t=0,t2,x,y,vox,voy,detr,ang;
-    double g=9.81;
+    //double Ho,Vo,Hd,Vd,alpo,alpd,dist,t=0,t2,x,y,vox,voy,detr,ang;
+    //double g=9.81;
     bool ver=true,va;
 
     while (ver==true)
@@ -24,36 +24,55 @@ int main()
         {
             case 1:
             {
-            float dist,Ho,Hd,t=0.0,vox,voy,detr,g=9.81,y,t2,x,ang=0.5;
-            cout<<"distancia entre los caniones: (d) ";
-            cin>>dist;
-            cout<<"Altura canion of: ";
-            cin>>Ho;
-            cout<<"Altura canion def: ";
-            cin>>Hd;
-            ang=90;
-            float v=0.1;
 
-            if(Ho==Hd)
-            {
-                for(;t<2.5;v=v+0.01)//2.5 porque es lo que se demora en responder el canion defensivo
+                float Ho,Hd,dist,v=0,ang=5,t=0,g=9.81,t2,cont=0;
+                cout<<"distancia entre los caniones: (d) ";
+                cin>>dist;
+                cout<<"Altura canion of: ";
+                cin>>Ho;
+                cout<<"Altura canion def: ";
+                cin>>Hd;
+                float vox,voy,det,det2,a,b,c;
+                for(v=0.01;100000;v+=0.01)
                 {
-                    ang=20;//CUANDO LAS DOS ALTURAS de los caniones MIDEN LO MISMO Se puede usar cualquier angulo del primer cuadrante a excepcion de 90
-                    vox=v*cos(ang*(3.14/180));
-                    voy=v*sin(ang*(3.14/180));
-                    detr=(pow(voy,2))-((4*(g/2))*(Hd-Ho));
-                    t=(voy+sqrt(detr))/2;
-                    cout<<"Tiempo 2: "<<t2<<endl;
-                    cout<<"El tiempo es: "<<t<<endl;
-                    y=Ho+(voy*t)+((-(g/2))*(t*t));
-                    t2=dist/vox;
-                    if(abs(t-t2)<=0.001)
+                    for (ang=0;(ang>=0 && ang<=90) || (ang>270 && ang<360);ang++)
                     {
-                        cout<<"vo:"<< v <<" tiempo:"<< t <<" con angulo: "<<ang<<endl;
-                        break;
+                        if (ang==90)
+                        {
+                            ang=-89;
+                        }
+                        vox=cos(ang*(3.14/180));
+                        voy=sin(ang*(3.14/180));
+                        a=g/2;
+                        b=(v*vox)*-1;
+                        c=Ho-Hd;
+                        det=((b*b)-(4*a*c));
+                        det2=-1*(b)+sqrt(det);
+                        t=det2/(2*a);
+                        t2=dist/(vox*v);
+                        if (t<2.5 && t2<2.5)//El disparo debe llegar antes de 2.5 s
+                        {
+                            if(abs(t-t2)<=0.01)
+                            {
+                                cont++;
+                                if(cont<=3)
+                                {
+
+                                    cout << "Disparo " << cont << " La velocidad inicial con " << ang << " grados es " << v << " m/s" << endl;
+                                    cout <<  "se demora " << t << " segundos en impactar." << endl;
+                                }
+                                if(cont==3)
+                                {
+                                    break;
+                                }
+                            }
+                        }
                     }
                 }
-            }
+
+
+
+
 
             }
             break;
